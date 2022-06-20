@@ -4,7 +4,7 @@
  */
 
 package Proyecto1;
-
+import java.util.Scanner;
 /**
  *
  * @author Jorge Daniel
@@ -13,5 +13,7 @@ public class Proyecto1Grupo1 {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
+        Scanner sc = new Scanner(System.in);
+        
     }
 }
