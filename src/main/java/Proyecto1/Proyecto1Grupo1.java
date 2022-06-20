@@ -15,6 +15,7 @@ public class Proyecto1Grupo1 {
         System.out.println("Hello World!");
         System.out.println("HOola");
         System.out.println("REPROBADOS EN POO 2022");
+        System.out.println("hello bbys");
                 
                 
            
