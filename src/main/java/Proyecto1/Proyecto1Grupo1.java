@@ -7,12 +7,11 @@ package Proyecto1;
 import java.util.Scanner;
 /**
  *
- * @author Jorge Daniel
+ * @author Jorge Mawyin, Ricardo Freire, Kevin Roldan
  */
 public class Proyecto1Grupo1 {
 
     public static void main(String[] args) {
-        System.out.println("programa 1");
         System.out.println("Prueba de Git");
                 
                 
