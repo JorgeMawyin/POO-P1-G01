@@ -12,10 +12,7 @@ import java.util.Scanner;
 public class Proyecto1Grupo1 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
-        System.out.println("HOola");
-        System.out.println("REPROBADOS EN POO 2022");
-        System.out.println("hello bbysss");
+        System.out.println("programa 1");
                 
                 
            
