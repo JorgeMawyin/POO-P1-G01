@@ -58,11 +58,6 @@ public class Cita {
         System.out.println("Las citas de la fecha: "+fechaCita+" son: ");
     
     }
-    /*System.out.println("MENU");
-    System.out.println("1. Crear cita");
-    System.out.println("2. Eliminar cita");
-    System.out.println("3. Consultar cita");
-    System.out.println("Ingrese la opción deseada:");
-    int opcion = sc.nextInt();*/
+    
     
 }
