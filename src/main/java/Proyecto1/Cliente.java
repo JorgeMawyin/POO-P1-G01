@@ -32,7 +32,7 @@ public class Cliente extends Persona {
         return "Cliente: "+cliente;
     }
     
-    public String editarCliente(String nombre, String email, Representante datosRepresentante){
-        ret
+    public void editarCliente(String nombre, String email, Representante datosRepresentante){
+        
     }
 }
