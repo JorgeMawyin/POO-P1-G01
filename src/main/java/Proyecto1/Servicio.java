@@ -9,19 +9,13 @@ package Proyecto1;
  * @author Usuario
  */
 
-/*-nombreServicio: TipoServicio
--duracionAtencion: int
--precio: double
--estado: boolean*/
-
 public class Servicio {
     
     //Creacion de atributos de Servicio
     private TipoServicio nombreServicio;
     private int duracionAtencion;
     private double precio;
-    private boolean estado;
-    
+    private boolean estado;   
     
     // Creacion de Getters and Setters
 
@@ -73,6 +67,16 @@ public class Servicio {
                
     }
 
+    public String toString(){
+        
+        System.out.println("Información del servicio: ");
+        if(estado){
+            return("Nombre del servicio: "+nombreServicio+"\n Duración: "+duracionAtencion+"\n Precio: "+precio+"\n Estado: Activo");
+        }else{
+            return("Nombre del servicio: "+nombreServicio+"\n Duración: "+duracionAtencion+"\n Precio: "+precio+"\n Estado: Inactivo");
+        }
+        
+    }
 
     
 }

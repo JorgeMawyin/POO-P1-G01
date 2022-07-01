@@ -6,7 +6,7 @@ package Proyecto1;
 
 /**
  *
- * @author Pc
+ * @author Jorge Mawyin, Ricardo Freire, Kevin Roldan
  */
 public class Persona {
     //Creación de atributos privados
@@ -14,7 +14,7 @@ public class Persona {
     private String nombre;
     private String telefono;
     private String email;
-    
+
     //Creación de getters para cada atributo
     public String getCedula(){
         return cedula;
@@ -55,5 +55,9 @@ public class Persona {
         this.nombre = nombre;
         this.telefono = telefono;
         this.email = email;
+    }
+    
+    public String toString(){
+        return("Nombre del empleado: "+nombre+"\nCedula: "+cedula+"\nTelefono: "+telefono+"\nEmail: "+email);
     }
 }
