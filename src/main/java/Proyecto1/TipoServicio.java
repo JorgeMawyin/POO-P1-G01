@@ -10,6 +10,7 @@ package Proyecto1;
  */
 public enum TipoServicio {
     TerapiaDeLenguaje,
-    Terapia,
-    Psicopedagógica;
+    TerapiaPsicopedagógica,
+    TerapiaFisica
+    ;
 }
