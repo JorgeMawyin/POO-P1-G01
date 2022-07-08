@@ -6,7 +6,7 @@ package Proyecto1;
 
 /**
  *
- * @author Usuario
+ * @author Jorge Mawyin, Ricardo Freire, Kevin Roldan
  */
 
 /*-nombreServicio: TipoServicio
