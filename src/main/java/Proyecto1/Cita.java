@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Proyecto1;
+import java.time.*;
 
 /*
 + crearCita(String fechaCita, String horaCita, Cliente cliente, Empleado encargado): void

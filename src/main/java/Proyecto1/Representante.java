@@ -8,10 +8,14 @@ package Proyecto1;
  *
  * @author Jorge Mawyin, Ricardo Freire, Kevin Roldan
  */
-enum TipoServicio {
-    TerapiaDeLenguaje,
-    TerapiaPsicopedagógica,
-    TerapiaFisica
-    ;
-
+public class Representante extends Persona {
+    
+    public Representante(String cedula, String nombre, String telefono, String email){
+        super(cedula, nombre, telefono, email);
+    }
+    
+    
+    public String toString(){
+        return super.toString();
+    }
 }
