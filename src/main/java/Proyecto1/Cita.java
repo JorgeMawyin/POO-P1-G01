@@ -4,6 +4,9 @@
  */
 package Proyecto1;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /*
 + crearCita(String fechaCita, String horaCita, Cliente cliente, Empleado encargado): void
 + eliminarCita(String cedula): void
@@ -22,6 +25,7 @@ public class Cita {
     private String horaCita;
     private Cliente cliente;
     private Empleado encargado;
+    public static ArrayList <Cita> arrayCita= new ArrayList();
     
     //Creación de getters and setters
     public String getFechaCita() {
@@ -61,6 +65,7 @@ public class Cita {
         this.horaCita = horaCita;
         this.cliente = cliente;
         this.encargado = encargado;
+        arrayCita.add(this);
     }   
     
     //Creación de los métodos
@@ -73,9 +78,14 @@ public class Cita {
     }
     
     public void consultarCita(String fechaCita){
-        System.out.println("Las citas de la fecha: "+fechaCita+" son: ");
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese la fecha para consultar su cita:");
+        int consultarCit = sc.nextInt();
+        for (Cita cit:arrayCita){
+            if(fechaCita.equals(consultarCit)){
+                System.out.println(cit);
+            }
+        }
     
     }
-    
-    
 }
