@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Proyecto1;
-
+import java.util.ArrayList;
 /**
  *
  * @author Jorge Mawyin, Ricardo Freire, Kevin Roldan
@@ -33,10 +33,7 @@ public class Persona {
     }
     
     //Creaciòn de setters para cada atributo
-    public void setCedula(String cedula){
-        this.cedula = cedula;
-    }
-    
+ 
     public void setNombre(String nombre){
         this.nombre = nombre;
     }

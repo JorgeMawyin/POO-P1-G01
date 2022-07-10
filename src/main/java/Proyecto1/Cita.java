@@ -17,11 +17,12 @@ import java.time.*;
  * @author Jorge Mawyin, Ricardo Freire, Kevin Roldan
  */
 public class Cita {
+
     //Creación de atributos privados
     private String fechaCita;
     private String horaCita;
-    //private Cliente cliente;
-    //private Empleado encargado;
+    private Cliente cliente;
+    private Empleado encargado;
     
     //Creación de getters and setters
     public String getFechaCita() {
@@ -40,11 +41,28 @@ public class Cita {
         this.horaCita = horaCita;
     }
     
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public Empleado getEncargado() {
+        return encargado;
+    }
+    
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public void setEncargado(Empleado encargado) {
+        this.encargado = encargado;
+    }
     //Creación contructores
-    public Cita(String fechaCita, String horaCita) {
+ public Cita(String fechaCita, String horaCita, Cliente cliente, Empleado encargado) {
         this.fechaCita = fechaCita;
         this.horaCita = horaCita;
-    }
+        this.cliente = cliente;
+        this.encargado = encargado;
+    }   
     
     //Creación de los métodos
     public void crearCita(String fechaCita, String horaCita){
