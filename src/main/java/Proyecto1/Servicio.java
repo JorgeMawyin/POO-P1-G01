@@ -4,6 +4,8 @@
  */
 package Proyecto1;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Usuario
@@ -15,7 +17,8 @@ public class Servicio {
     private TipoServicio nombreServicio;
     private int duracionAtencion;
     private double precio;
-    private boolean estado;   
+    private boolean estado;  
+    public static ArrayList <Servicio> arrayServ= new ArrayList();
     
     // Creacion de Getters and Setters
 
@@ -59,6 +62,8 @@ public class Servicio {
         this.duracionAtencion = duracionAtencion;
         this.precio = precio;
         this.estado = estado;
+        arrayServ.add(this);
+        
     }
     
     //Creacion de metodos
@@ -75,8 +80,12 @@ public class Servicio {
         }else{
             return("Nombre del servicio: "+nombreServicio+"\n Duración: "+duracionAtencion+"\n Precio: "+precio+"\n Estado: Inactivo");
         }
-        
+     
     }
+     
+     
+     
+     
 
-    
+        
 }

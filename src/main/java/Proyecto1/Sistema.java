@@ -4,14 +4,30 @@
  */
 
 package Proyecto1;
+import static Proyecto1.Servicio.arrayServ;
+import java.util.ArrayList;
 import java.util.Scanner;
 /**
  *
  * @author Jorge Mawyin, Ricardo Freire, Kevin Roldan
  */
 public class Sistema {
-
+  
+//Creación de objetos Servicio
+         
+        
     public static void main(String[] args) {
+       /*
+        Servicio s1 = new Servicio(TipoServicio.TerapiaDeLenguaje,10,555,true);
+        
+        for(Servicio ser:arrayServ){
+            System.out.println(ser);
+            
+        }
+        */  
+        
+        
+        
         Scanner sc = new Scanner(System.in);
         System.out.println("MENU");
         System.out.println("1. Servicio");
@@ -22,6 +38,8 @@ public class Sistema {
         System.out.println("6. Salir");
         System.out.println("Ingrese la opción deseada:");
         int opcion = sc.nextInt();
+        
+      
         switch (opcion){
             case 1:
                 
@@ -57,6 +75,6 @@ public class Sistema {
             default:
                 break;
         }
-        
+       
     }
 }
