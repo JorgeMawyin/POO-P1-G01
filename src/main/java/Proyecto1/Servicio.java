@@ -11,7 +11,7 @@ package Proyecto1;
 
 public class Servicio {
     
-    //Creacion de atributos de Servicio
+    //Creacion de atributos de Servicios
     private TipoServicio nombreServicio;
     private int duracionAtencion;
     private double precio;
