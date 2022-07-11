@@ -110,8 +110,9 @@ public class Atencion {
                     }
                 }
                 break;
-    }
-        
+                
+         }
+       sc.close(); 
     }
     
     

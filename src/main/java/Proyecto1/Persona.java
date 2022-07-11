@@ -4,6 +4,7 @@
  */
 package Proyecto1;
 import java.util.ArrayList;
+import java.util.Objects;
 /**
  *
  * @author Jorge Mawyin, Ricardo Freire, Kevin Roldan
@@ -58,4 +59,22 @@ public class Persona {
     public String toString(){
         return("Nombre del empleado: "+nombre+"\nCedula: "+cedula+"\nTelefono: "+telefono+"\nEmail: "+email);
     }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Persona other = (Persona) obj;
+        return Objects.equals(this.cedula, other.cedula);
+    }
+    
+    
 }

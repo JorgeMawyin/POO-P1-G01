@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Proyecto1;
+import static Proyecto1.Atencion.arrayAtencion;
 import java.time.*;
 
 import java.util.ArrayList;
@@ -22,26 +23,26 @@ import java.util.Scanner;
 public class Cita {
 
     //Creación de atributos privados
-    private String fechaCita;
-    private String horaCita;
+    private LocalDate fechaCita;
+    private LocalTime horaCita;
     private Cliente cliente;
     private Empleado encargado;
     public static ArrayList <Cita> arrayCita= new ArrayList();
     
     //Creación de getters and setters
-    public String getFechaCita() {
+    public LocalDate getFechaCita() {
         return fechaCita;
     }
 
-    public void setFechaCita(String fechaCita) {
+    public void setFechaCita(LocalDate fechaCita) {
         this.fechaCita = fechaCita;
     }
 
-    public String getHoraCita() {
+    public LocalTime getHoraCita() {
         return horaCita;
     }
 
-    public void setHoraCita(String horaCita) {
+    public void setHoraCita(LocalTime horaCita) {
         this.horaCita = horaCita;
     }
     
@@ -62,21 +63,53 @@ public class Cita {
     }
     //Creación contructores
  public Cita(String fechaCita, String horaCita, Cliente cliente, Empleado encargado) {
-        this.fechaCita = fechaCita;
-        this.horaCita = horaCita;
+     
+     ArrayList<LocalTime> horariosEmp=new  ArrayList<LocalTime>();
+     for(Cita cita:arrayCita){
+         if(cita.getEncargado().equals(encargado)) horariosEmp.add(cita.getHoraCita());
+     }    
+     
+     if (!horariosEmp.contains(LocalTime.parse(horaCita))){
+        this.fechaCita = LocalDate.parse(fechaCita);
+        this.horaCita = LocalTime.parse(horaCita);
         this.cliente = cliente;
         this.encargado = encargado;
         arrayCita.add(this);
+     }
+     
     }   
     
     //Creación de los métodos
-    public void crearCita(String fechaCita, String horaCita){
-        System.out.println("Cita Creada");
-    }
     
     public void eliminarCita(){
-        System.out.println("Cita eliminada");
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese la cédula del cliente:");
+        String cedulaCli = sc.nextLine();
+        ArrayList<Cita> citasCliente=new ArrayList<Cita>();
+        short contador=1;
+        for (Cita cita:arrayCita){
+            if(cita.getCliente().getCedula().equals(cedulaCli)){
+            System.out.println(contador+".- "+cita);
+            citasCliente.add(cita);
+            contador++;
+            }
+            
+        }
+        System.out.println(contador+".- Salir");
+        int elim;
+  
+        do{
+        System.out.println("Seleccione la cita a eliminar: ");
+        elim = sc.nextInt();
+        sc.nextLine();
+        arrayCita.remove(citasCliente.get(elim-1));                     
+        System.out.println("Cita eliminada");  
+        
+        }while(elim<contador);
+        
     }
+    
+    
     
     public void consultarCita(String fechaCita){
         Scanner sc = new Scanner(System.in);
@@ -87,6 +120,6 @@ public class Cita {
                 System.out.println(cit);
             }
         }
-    
+        sc.close();
     }
 }
