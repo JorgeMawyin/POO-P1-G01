@@ -114,7 +114,8 @@ public class Cita {
     public void consultarCita(String fechaCita){
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese la fecha para consultar su cita:");
-        int consultarCit = sc.nextInt();
+        String consulta = sc.nextLine();
+        LocalDate consultarCit= LocalDate.parse(consulta);
         for (Cita cit:arrayCita){
             if(fechaCita.equals(consultarCit)){
                 System.out.println(cit);
