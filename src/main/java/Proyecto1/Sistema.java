@@ -44,7 +44,7 @@ public class Sistema {
             case 3:
                 break;
             case 4:
-                System.out.println("MENU");
+                System.out.println("MENU ");
                 System.out.println("1. Crear cita");
                 System.out.println("2. Eliminar cita");
                 System.out.println("3. Consultar cita");
