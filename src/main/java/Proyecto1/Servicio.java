@@ -5,13 +5,13 @@
 package Proyecto1;
 
 import java.util.ArrayList;
-
+import java.util.Iterator;
 /**
  *
  * @author Jorge Mawyin, Ricardo Freire, Kevin Roldan
  */
 
-public class Servicio {
+public class Servicio implements Iterator {
     
     //Creacion de atributos de Servicios
     private TipoServicio nombreServicio;
@@ -72,6 +72,13 @@ public class Servicio {
                
     }
     
+    public static void mostrarServicios(){
+        Iterator <Servicio> iter = arrayServ.iterator();
+        while(iter.hasNext()){
+            Servicio serv = iter.next();
+            System.out.println(serv);
+        }
+    }
 @Override
     public String toString(){
         
@@ -82,6 +89,16 @@ public class Servicio {
             return("Nombre del servicio: "+nombreServicio+"\n Duración: "+duracionAtencion+"\n Precio: "+precio+"\n Estado: Inactivo");
         }
      
+    }
+//metodos de la interaz Iterator
+    @Override
+    public boolean hasNext() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Object next() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
      
      

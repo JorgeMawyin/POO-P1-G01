@@ -17,14 +17,9 @@ public class Sistema {
          
         
     public static void main(String[] args) {
-       /*
         Servicio s1 = new Servicio(TipoServicio.TerapiaDeLenguaje,10,555,true);
         
-        for(Servicio ser:arrayServ){
-            System.out.println(ser);
-            
-        }
-        */  
+       
         
         
         
@@ -42,7 +37,7 @@ public class Sistema {
       
         switch (opcion){
             case 1:
-                
+                Servicio.mostrarServicios();
                 break;
             case 2:   
                 break;
