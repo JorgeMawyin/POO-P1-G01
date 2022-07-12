@@ -44,7 +44,7 @@ public class Sistema {
                 Cliente.mostrarClientes();
                 break;
             case 4:
-                System.out.println("MENU ");
+                System.out.println("MENU CITA");
                 System.out.println("1. Crear cita");
                 System.out.println("2. Eliminar cita");
                 System.out.println("3. Consultar cita");
@@ -54,54 +54,35 @@ public class Sistema {
                 
                 switch(opcionCita){
                     case 1:
-                        
-                        System.out.println("CREACIÓN DE CITA");
-                        System.out.print("Ingrese la fecha de la cita: ");
-                        String recfecha = sc.nextLine();
-                        System.out.println("Ingrese la hora de la cita: ");
-                        String recHora = sc.nextLine();
-                        System.out.println("INGRESE LOS DATOS DEL CLIENTE");
-                        System.out.println("Ingrese el nombre del cliente: ");
-                        String recNombreC = sc.nextLine();
-                        System.out.println("Ingrese la cédula del cliente: ");
-                        String recCedulaC = sc.nextLine();
-                        System.out.println("Ingrese el teléfono del cliente: ");
-                        String recTelefonoC = sc.nextLine();
-                        System.out.println("Ingrese el e-mail del cliente: ");
-                        String recEmailC= sc.nextLine();
-                        
-                        System.out.println("INGRESE LOS DATOS DEL REPRESENTANTE DEL CLIENTE");
-                        System.out.println("Ingrese el nombre del Representante: ");
-                        String recNombreR = sc.nextLine();
-                        System.out.println("Ingrese la cédula del Representante: ");
-                        String recCedulaR = sc.nextLine();
-                        System.out.println("Ingrese el teléfono del Representante: ");
-                        String recTelefonoR = sc.nextLine();
-                        System.out.println("Ingrese el e-mail del Representante: ");
-                        String recEmailR= sc.nextLine();
-                        Representante nuevoR = new Representante(recCedulaR, recNombreR, recTelefonoR, recEmailR);
-                        Cliente nuevoCliente = new Cliente(recCedulaC, recNombreC, recTelefonoC, recEmailC, nuevoR);
-                        System.out.println("Ingrese la cédula persona encargada de la cita: ");
-                        String recCedulaEncargado = sc.nextLine();
-                        
-                        Empleado empleado = null;
-                        for (Empleado e:Empleado.listaEmpleados){
-                        if (e.getCedula().equals(recCedulaEncargado)){
-                          empleado = e;
-                        }
-                        }
-                        Cita nuevaCita = new Cita(recfecha, recHora, nuevoCliente,empleado);
+                        Cita.crearCita();
                         break;
-
                     case 2:
+                        Cita.eliminarCita();
                         break;
                     case 3:
+                        Cita.consultarCita();
                         break;
                     default:
                         break;
                 }
                 break;
             case 5:
+                System.out.println("MENU ATENCIÓN");
+                System.out.println("1. Registrar Atención");
+                System.out.println("2. Consultar Atención");
+                System.out.print("Ingrese la opción deseada: ");
+                int opcionAtencion = sc.nextInt();
+                sc.nextLine();
+                switch(opcionAtencion){
+                    case 1:
+                        Cita.crearCita();
+                        break;
+                    case 2:
+                        Cita.eliminarCita();
+                        break;
+                    default:
+                        break;
+                }
                 break;
             case 6:
                 System.out.println("Gracias por preferirnos :D");

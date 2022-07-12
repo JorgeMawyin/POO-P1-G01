@@ -63,14 +63,13 @@ public class Cita {
     public void setEncargado(Empleado encargado) {
         this.encargado = encargado;
     }
+    
     //Creación contructores
- public Cita(String fechaCita, String horaCita, Cliente cliente, Empleado encargado) {
-     
+     public Cita(String fechaCita, String horaCita, Cliente cliente, Empleado encargado) {
      ArrayList<LocalDateTime> horariosEmp = new  ArrayList<LocalDateTime>();
      for(Cita cita:arrayCita){
-         if(cita.getEncargado().equals(encargado)) horariosEmp.add(LocalDateTime.of(cita.getFechaCita(),cita.getHoraCita()));
-     }    
-     
+        if(cita.getEncargado().equals(encargado)) horariosEmp.add(LocalDateTime.of(cita.getFechaCita(),cita.getHoraCita()));
+     }     
      if (!horariosEmp.contains(LocalDateTime.of(LocalDate.parse(fechaCita),LocalTime.parse(horaCita)))){
         this.fechaCita = LocalDate.parse(fechaCita);
         this.horaCita = LocalTime.parse(horaCita);
@@ -82,49 +81,93 @@ public class Cita {
     }   
     
     //Creación de los métodos
- public static void eliminarCita(){
-        Iterator <Cita> iter = arrayCita.iterator();
-        
+     
+    public static void crearCita(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Ingrese la cédula del cliente:");
-        String cedulaCli = sc.nextLine();
-        ArrayList<Cita> citasCliente=new ArrayList<Cita>();
-        short contador=1;
-        for (Cita cita:arrayCita){
-            if(cita.getCliente().getCedula().equals(cedulaCli)){
-            System.out.println(contador+".- "+cita);
-            citasCliente.add(cita);
-            contador++;
-            }
-            
+        System.out.println("CREACIÓN DE CITA");
+        System.out.print("Ingrese la fecha de la cita: ");
+        String recfecha = sc.nextLine();
+        System.out.println("Ingrese la hora de la cita: ");
+        String recHora = sc.nextLine();
+        System.out.println("Ingrese la cédula del cliente: ");
+        String recCedulaC = sc.nextLine();
+        Cliente nuevoCliente = Cliente.buscarCliente(recCedulaC);
+        if (nuevoCliente == null){
+        System.out.println("INGRESE LOS DATOS DEL CLIENTE");
+        System.out.println("Ingrese el nombre del cliente: ");
+        String recNombreC = sc.nextLine();
+        System.out.println("Ingrese el teléfono del cliente: ");
+        String recTelefonoC = sc.nextLine();
+        System.out.println("Ingrese el e-mail del cliente: ");
+        String recEmailC= sc.nextLine();
+        System.out.println("INGRESE LOS DATOS DEL REPRESENTANTE DEL CLIENTE");
+        System.out.println("Ingrese el nombre del Representante: ");
+        String recNombreR = sc.nextLine();
+        System.out.println("Ingrese la cédula del Representante: ");
+        String recCedulaR = sc.nextLine();
+        System.out.println("Ingrese el teléfono del Representante: ");
+        String recTelefonoR = sc.nextLine();
+        System.out.println("Ingrese el e-mail del Representante: ");
+        String recEmailR= sc.nextLine();
+        Representante nuevoR = new Representante(recCedulaR, recNombreR, recTelefonoR, recEmailR);
+        nuevoCliente = new Cliente(recCedulaC, recNombreC, recTelefonoC, recEmailC, nuevoR);
         }
-        System.out.println(contador+".- Salir");
-        int elim;
-  
-        do{
-        System.out.println("Seleccione la cita a eliminar: ");
-        elim = sc.nextInt();
-        sc.nextLine();
+        System.out.println("Ingrese la cédula persona encargada de la cita: ");
+        String recCedulaEncargado = sc.nextLine();
+                        
+        Empleado empleado = null;
+        for (Empleado e:Empleado.listaEmpleados){
+            if (e.getCedula().equals(recCedulaEncargado)){
+                empleado = e;
+            }
+        }
+        Cita nuevaCita = new Cita(recfecha, recHora, nuevoCliente,empleado);
+     }
+     
+     
+    public static void eliminarCita(){
+       Iterator <Cita> iter = arrayCita.iterator();
         
-        while(iter.hasNext()){
-            Cita c =iter.next();
-            if (c.equals(citasCliente.get(elim-1))){
+       Scanner sc = new Scanner(System.in);
+       System.out.println("Ingrese la cédula del cliente:");
+       String cedulaCli = sc.nextLine();
+       ArrayList<Cita> citasCliente=new ArrayList<Cita>();
+       short contador=1;
+       for (Cita cita:arrayCita){
+           if(cita.getCliente().getCedula().equals(cedulaCli)){
+           System.out.println(contador+".- "+cita);
+           citasCliente.add(cita);
+           contador++;
+           }
+            
+       }
+       System.out.println(contador+".- Salir");
+       int elim;
+  
+       do{
+       System.out.println("Seleccione la cita a eliminar: ");
+       elim = sc.nextInt();
+       sc.nextLine();
+       
+       while(iter.hasNext()){
+           Cita c =iter.next();
+           if (c.equals(citasCliente.get(elim-1))){
                 iter.remove();
                 System.out.println("Cita eliminada");  
-            }
-        }                   
+           }
+       }                   
                 
-        }while(elim<contador);
+       }while(elim<contador);
     } 
         
     
-    public void consultarCita(String fechaCita){
+    public static void consultarCita(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese la fecha para consultar su cita:");
         String consulta = sc.nextLine();
         LocalDate consultarCit= LocalDate.parse(consulta);
         for (Cita cit:arrayCita){
-            if(fechaCita.equals(consultarCit)){
+            if(cit.getFechaCita().equals(consulta)){
                 System.out.println(cit);
             }
         }

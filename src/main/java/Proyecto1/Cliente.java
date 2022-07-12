@@ -24,6 +24,16 @@ public class Cliente extends Persona implements Iterator{
         arrayCliente.add(this);
     }
     
+    //Creación de métodos
+    public static Cliente buscarCliente(String c){
+        for (Cliente listaC:arrayCliente){
+            if (listaC.getCedula().equals(c)){
+                return listaC;
+            }
+        }
+        return null;
+    }
+    
     //Creación de getter y setter
     public Representante getDatosRepresentante(){
         return datosRepresentante;
