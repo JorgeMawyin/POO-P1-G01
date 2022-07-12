@@ -3,9 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Proyecto1;
-import static Proyecto1.Atencion.arrayAtencion;
 import java.time.*;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
