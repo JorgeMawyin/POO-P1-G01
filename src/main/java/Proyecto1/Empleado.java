@@ -4,11 +4,12 @@
  */
 package Proyecto1;
 import java.util.ArrayList;
+import java.util.Iterator;
 /**
  *
  * @author Jorge Daniel
  */
-public class Empleado extends Persona{
+public class Empleado extends Persona implements Iterator{
     
     //creacion variable en privado
     private boolean estadoEmpleado;
@@ -39,6 +40,14 @@ public class Empleado extends Persona{
         this.estadoEmpleado = estadoEmpleado;
     }
     
+    //Creación métodos
+    public static void mostrarEmpleados(){
+        Iterator <Empleado> iter = listaEmpleados.iterator();
+        while(iter.hasNext()){
+            Empleado emp = iter.next();
+            System.out.println(emp);
+        }
+    }
     
     @Override
     public String toString(){
@@ -48,6 +57,16 @@ public class Empleado extends Persona{
         }else{
             return(super.toString()+"\nEstado: Inactivo");
         } 
+    }
+
+    @Override
+    public boolean hasNext() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Object next() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     

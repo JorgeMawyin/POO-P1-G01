@@ -1,6 +1,7 @@
 package Proyecto1;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Pc
  */
-public class Cliente extends Persona {
+public class Cliente extends Persona implements Iterator{
     //Creación de atributos privados
     private Representante datosRepresentante;
     public static ArrayList <Cliente> arrayCliente= new ArrayList();
@@ -32,11 +33,25 @@ public class Cliente extends Persona {
         this.datosRepresentante = datosRepresentante;
     }
     
-    public String mostrarCliente(String cliente){
-        return "Cliente: "+cliente;
+    public static void mostrarClientes(){
+        Iterator <Cliente> iter = arrayCliente.iterator();
+        while(iter.hasNext()){
+            Cliente clt = iter.next();
+            System.out.println(clt);
+        }
     }
     
     public void editarCliente(String nombre, String email, Representante datosRepresentante){
         
+    }
+
+    @Override
+    public boolean hasNext() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Object next() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

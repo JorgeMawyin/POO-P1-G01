@@ -39,16 +39,18 @@ public class Sistema {
             case 1:
                 Servicio.mostrarServicios();
                 break;
-            case 2:   
+            case 2:
+                Empleado.mostrarEmpleados();
                 break;
             case 3:
+                Cliente.mostrarClientes();
                 break;
             case 4:
                 System.out.println("MENU ");
                 System.out.println("1. Crear cita");
                 System.out.println("2. Eliminar cita");
                 System.out.println("3. Consultar cita");
-                System.out.println("Ingrese la opción deseada:");
+                System.out.print("Ingrese la opción deseada: ");
                 int opcionCita = sc.nextInt();
                 
                 switch(opcionCita){

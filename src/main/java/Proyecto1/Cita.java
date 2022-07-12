@@ -64,7 +64,7 @@ public class Cita {
     //Creación contructores
  public Cita(String fechaCita, String horaCita, Cliente cliente, Empleado encargado) {
      
-     ArrayList<LocalTime> horariosEmp=new  ArrayList<LocalTime>();
+     ArrayList<LocalTime> horariosEmp = new  ArrayList<LocalTime>();
      for(Cita cita:arrayCita){
          if(cita.getEncargado().equals(encargado)) horariosEmp.add(cita.getHoraCita());
      }    
