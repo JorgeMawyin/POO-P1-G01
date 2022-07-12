@@ -4,10 +4,13 @@
  */
 package Proyecto1;
 import static Proyecto1.Atencion.arrayAtencion;
+import static Proyecto1.Empleado.listaEmpleados;
 import java.time.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Iterator;
+import java.util.Objects;
 
 /*
 + crearCita(String fechaCita, String horaCita, Cliente cliente, Empleado encargado): void
@@ -64,12 +67,12 @@ public class Cita {
     //Creación contructores
  public Cita(String fechaCita, String horaCita, Cliente cliente, Empleado encargado) {
      
-     ArrayList<LocalTime> horariosEmp = new  ArrayList<LocalTime>();
+     ArrayList<LocalDateTime> horariosEmp = new  ArrayList<LocalDateTime>();
      for(Cita cita:arrayCita){
-         if(cita.getEncargado().equals(encargado)) horariosEmp.add(cita.getHoraCita());
+         if(cita.getEncargado().equals(encargado)) horariosEmp.add(LocalDateTime.of(cita.getFechaCita(),cita.getHoraCita()));
      }    
      
-     if (!horariosEmp.contains(LocalTime.parse(horaCita))){
+     if (!horariosEmp.contains(LocalDateTime.of(LocalDate.parse(fechaCita),LocalTime.parse(horaCita)))){
         this.fechaCita = LocalDate.parse(fechaCita);
         this.horaCita = LocalTime.parse(horaCita);
         this.cliente = cliente;
@@ -80,8 +83,9 @@ public class Cita {
     }   
     
     //Creación de los métodos
-    
-    public void eliminarCita(){
+ public static void eliminarCita(){
+        Iterator <Cita> iter = arrayCita.iterator();
+        
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese la cédula del cliente:");
         String cedulaCli = sc.nextLine();
@@ -102,14 +106,18 @@ public class Cita {
         System.out.println("Seleccione la cita a eliminar: ");
         elim = sc.nextInt();
         sc.nextLine();
-        arrayCita.remove(citasCliente.get(elim-1));                     
-        System.out.println("Cita eliminada");  
         
+        while(iter.hasNext()){
+            Cita c =iter.next();
+            if (c.equals(citasCliente.get(elim-1))){
+                iter.remove();
+                System.out.println("Cita eliminada");  
+            }
+        }                   
+                
         }while(elim<contador);
+    } 
         
-    }
-    
-    
     
     public void consultarCita(String fechaCita){
         Scanner sc = new Scanner(System.in);
@@ -123,4 +131,25 @@ public class Cita {
         }
         sc.close();
     }
+    
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cita other = (Cita) obj;
+        return Objects.equals(this.fechaCita, other.fechaCita)&&!Objects.equals(this.horaCita, other.horaCita)&&Objects.equals(this.cliente, other.cliente);
+            
+        
+    }
+      
+    
+    
 }
