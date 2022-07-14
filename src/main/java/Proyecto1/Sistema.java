@@ -31,7 +31,7 @@ public class Sistema {
         System.out.println("6. Salir");
         System.out.println("Ingrese la opción deseada:");
         int opcion = sc.nextInt();
-        
+        sc.nextLine();
       
         switch (opcion){
             case 1:
@@ -75,10 +75,15 @@ public class Sistema {
                 sc.nextLine();
                 switch(opcionAtencion){
                     case 1:
-                        Cita.crearCita();
+                        System.out.println("Ingrese la cedula del cliente cuya cita se registrara: ");
+                        String cedula = sc.nextLine();
+                        Atencion.registrarAtencion(cedula);
+                        
+                        
+                        
                         break;
                     case 2:
-                        Cita.eliminarCita();
+                        Atencion.consultarAtencion();
                         break;
                     default:
                         break;
@@ -91,5 +96,7 @@ public class Sistema {
                 break;
         }
        
+        
+        sc.close();
     }
 }

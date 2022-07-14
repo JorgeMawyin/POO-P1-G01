@@ -3,8 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Proyecto1;
-import static Proyecto1.Atencion.arrayAtencion;
-import static Proyecto1.Empleado.listaEmpleados;
+
 import java.time.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -187,11 +186,10 @@ public class Cita {
             return false;
         }
         final Cita other = (Cita) obj;
-        return Objects.equals(this.fechaCita, other.fechaCita)&&!Objects.equals(this.horaCita, other.horaCita)&&Objects.equals(this.cliente, other.cliente);
+        return Objects.equals(this.fechaCita, other.fechaCita)&&Objects.equals(this.horaCita, other.horaCita)&&Objects.equals(this.cliente, other.cliente);
             
         
     }
-      
-    
+
     
 }

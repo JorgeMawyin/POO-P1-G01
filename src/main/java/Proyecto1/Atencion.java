@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Proyecto1;
-import java.sql.Time;
+import java.time.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 /**
@@ -13,13 +13,13 @@ import java.util.Scanner;
 public class Atencion {
     //Creación de los atributos privados
     private boolean asistenciaCliente;
-    private Time duracionReal;
+    private LocalTime duracionReal;
     private Cita cita;
     private Empleado encargadoAtencion;
     public static ArrayList <Atencion> arrayAtencion= new ArrayList();
 
     //Creacion de los métodos getters and setters
-    public boolean isAsistenciaCliente() {
+    public boolean getAsistenciaCliente() {
         return asistenciaCliente;
     }
 
@@ -27,11 +27,11 @@ public class Atencion {
         this.asistenciaCliente = asistenciaCliente;
     }
 
-    public Time getDuracionReal() {
+    public LocalTime getDuracionReal() {
         return duracionReal;
     }
 
-    public void setDuracionReal(Time duracionReal) {
+    public void setDuracionReal(LocalTime duracionReal) {
         this.duracionReal = duracionReal;
     }
 
@@ -53,7 +53,7 @@ public class Atencion {
     
     //Creación constructor
 
-    public Atencion(boolean asistenciaCliente, Time duracionReal, Cita cita, Empleado encargadoAtencion) {
+    public Atencion(boolean asistenciaCliente, LocalTime duracionReal, Cita cita, Empleado encargadoAtencion) {
         this.asistenciaCliente = asistenciaCliente;
         this.duracionReal = duracionReal;
         this.cita = cita;
@@ -63,17 +63,51 @@ public class Atencion {
     
     
     //Creación métodos
-    public void registrarAtencion(boolean asistenciaCliente, Time duracionReal){
+    public static void registrarAtencion(String cedula){
+       
+        Scanner sc= new Scanner(System.in);  
+        short cont = 1;
+        for(Cita citas:Cita.arrayCita){
+        if (citas.getCliente().getCedula().equals(cedula)){
+        System.out.println(cont+".- "+citas);
+        cont++;
+            }
+            
+        }
+        System.out.println("Seleccione la cita a registrar: ");
+        int numeCita= sc.nextInt();        
+        sc.nextLine();
+        Cita citaRegistro = Cita.arrayCita.get(numeCita-1);
         
-        if (!asistenciaCliente){
+        System.out.println("¿El cliente asistio a la cita? (S/N): ");
+        String bool= sc.nextLine();
+        boolean asistCliente;
+        
+        if(bool.toLowerCase().equals("s")) asistCliente=true; 
+        else asistCliente=false;
+         
+        if (asistCliente){
+            
+            System.out.println("¿Cuanto duro la cita? Ingrese la hora con el formato 'hora:min:seg': ");
+            LocalTime duracionCita = LocalTime.parse(sc.nextLine());
+            System.out.println("¿Cual de los siguientes empleados atendio esta cita?");
+            cont =1;
+            for(Empleado emp:Empleado.listaEmpleados){        
+            System.out.println(cont+".- "+emp);
+            cont++;  
+            }
+            Empleado encargadoReal = Empleado.listaEmpleados.get(sc.nextInt()-1);
+            sc.nextLine();
+
+            Atencion nuevaAtencion= new Atencion(asistCliente,duracionCita,citaRegistro,encargadoReal);
             System.out.println("Atención Registrada");
         }else{
             System.out.println("Atención no Registrada");
         }
-
+            sc.close();
     }
     
-    public void consultarAtencion(){
+    public static void consultarAtencion(){
         Scanner sc = new Scanner(System.in);
         
         System.out.println("Consultas");
@@ -87,7 +121,7 @@ public class Atencion {
                 System.out.println("Ingrese la cédula del empleado:");
                 String cedulaEmp = sc.nextLine();
                 for (Atencion aten:arrayAtencion){
-                    if(encargadoAtencion.getCedula().equals(cedulaEmp)){
+                    if(aten.getEncargadoAtencion().getCedula().equals(cedulaEmp)){
                         System.out.println(aten);  
                     }
                 }
@@ -96,19 +130,21 @@ public class Atencion {
                 System.out.println("Ingrese la cédula del cliente:");
                 String cedulaCli = sc.nextLine();
                 for (Atencion aten:arrayAtencion){
-                    if(cita.getCliente().getCedula().equals(cedulaCli)){
+                    if(aten.getCita().getCliente().getCedula().equals(cedulaCli)){
                         System.out.println(aten);
                     }
                 }
                 break;
             case 3:
-                System.out.println("Ingrese la fecha de la cita:");
-                String fechaCit = sc.nextLine();
+                System.out.println("Ingrese la fecha de la cita con el formato 'año-mes-dia':");
+                LocalDate fechaCit = LocalDate.parse(sc.nextLine());
                 for (Atencion aten:arrayAtencion){
-                    if(cita.getFechaCita().equals(fechaCit)){
+                    if(aten.getCita().getFechaCita().equals(fechaCit)){
                         System.out.println(aten);
                     }
                 }
+                break;
+            default:
                 break;
                 
          }
