@@ -57,7 +57,7 @@ public class Persona {
     
     @Override
     public String toString(){
-        return("Nombre del empleado: "+nombre+"\nCedula: "+cedula+"\nTelefono: "+telefono+"\nEmail: "+email);
+        return("Nombre: "+nombre+"\nCedula: "+cedula+"\nTelefono: "+telefono+"\nEmail: "+email);
     }
 
 

@@ -44,6 +44,7 @@ public class Cliente extends Persona implements Iterator{
     }
     
     public static void mostrarClientes(){
+        System.out.println("Información de los clientes:\n");
         Iterator <Cliente> iter = arrayCliente.iterator();
         while(iter.hasNext()){
             Cliente clt = iter.next();
@@ -64,4 +65,11 @@ public class Cliente extends Persona implements Iterator{
     public Object next() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nDatos del representante:\n" + datosRepresentante+"\n";
+    }
+    
+
 }

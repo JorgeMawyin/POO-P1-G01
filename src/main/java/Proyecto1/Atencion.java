@@ -53,9 +53,9 @@ public class Atencion {
     
     //Creación constructor
 
-    public Atencion(boolean asistenciaCliente, LocalTime duracionReal, Cita cita, Empleado encargadoAtencion) {
+    public Atencion(boolean asistenciaCliente, String duracionReal, Cita cita, Empleado encargadoAtencion) {
         this.asistenciaCliente = asistenciaCliente;
-        this.duracionReal = duracionReal;
+        this.duracionReal = LocalTime.parse(duracionReal);
         this.cita = cita;
         this.encargadoAtencion = encargadoAtencion;
         arrayAtencion.add(this);
@@ -89,7 +89,7 @@ public class Atencion {
         if (asistCliente){
             
             System.out.println("¿Cuanto duro la cita? Ingrese la hora con el formato 'hora:min:seg': ");
-            LocalTime duracionCita = LocalTime.parse(sc.nextLine());
+            String duracionCita = (sc.nextLine());
             System.out.println("¿Cual de los siguientes empleados atendio esta cita?");
             cont =1;
             for(Empleado emp:Empleado.listaEmpleados){        
@@ -149,6 +149,16 @@ public class Atencion {
                 
          }
        sc.close(); 
+    }
+
+    @Override
+    public String toString() {
+        System.out.println("Información del empleado: ");
+        if(asistenciaCliente){
+return "Atencion{" + "\nEl cliente asistió a la cita " + "\nDuración de la cita: " + duracionReal + "\nFecha de la cita: " + cita.getFechaCita() + "\nServicio de cita: "+cita.getServicio()+ "encargadoAtencion=" + encargadoAtencion + '}';
+        }else{
+            return(super.toString()+"\nEstado: Inactivo");}
+        
     }
     
     

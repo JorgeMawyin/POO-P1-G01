@@ -28,6 +28,7 @@ public class Cita {
     private LocalTime horaCita;
     private Cliente cliente;
     private Empleado encargado;
+    private Servicio servicio;
     public static ArrayList <Cita> arrayCita= new ArrayList();
     
     //Creación de getters and setters
@@ -55,6 +56,9 @@ public class Cita {
         return encargado;
     }
     
+    public Servicio getServicio(){
+        return servicio;
+    }
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
@@ -62,9 +66,13 @@ public class Cita {
     public void setEncargado(Empleado encargado) {
         this.encargado = encargado;
     }
+
+    public void setServicio(Servicio servicio) {
+        this.servicio = servicio;
+    }
     
     //Creación contructores
-     public Cita(String fechaCita, String horaCita, Cliente cliente, Empleado encargado) {
+     public Cita(String fechaCita, String horaCita, Cliente cliente, Empleado encargado, Servicio servicio) {
      ArrayList<LocalDateTime> horariosEmp = new  ArrayList<LocalDateTime>();
      for(Cita cita:arrayCita){
         if(cita.getEncargado().equals(encargado)) horariosEmp.add(LocalDateTime.of(cita.getFechaCita(),cita.getHoraCita()));
@@ -74,6 +82,7 @@ public class Cita {
         this.horaCita = LocalTime.parse(horaCita);
         this.cliente = cliente;
         this.encargado = encargado;
+        this.servicio = servicio;
         arrayCita.add(this);
      }
      
@@ -84,9 +93,9 @@ public class Cita {
     public static void crearCita(){
         Scanner sc = new Scanner(System.in);
         System.out.println("CREACIÓN DE CITA");
-        System.out.print("Ingrese la fecha de la cita: ");
+        System.out.print("Ingrese la fecha de la cita (AAAA-MM-DD): ");
         String recfecha = sc.nextLine();
-        System.out.println("Ingrese la hora de la cita: ");
+        System.out.println("Ingrese la hora de la cita(HH:MM:SS): ");
         String recHora = sc.nextLine();
         System.out.println("Ingrese la cédula del cliente: ");
         String recCedulaC = sc.nextLine();
@@ -120,7 +129,7 @@ public class Cita {
                 empleado = e;
             }
         }
-        Cita nuevaCita = new Cita(recfecha, recHora, nuevoCliente,empleado);
+        //Cita nuevaCita = new Cita(recfecha, recHora, nuevoCliente,empleado);
      }
      
      
@@ -143,7 +152,7 @@ public class Cita {
        System.out.println(contador+".- Salir");
        int elim;
   
-       do{
+       
        System.out.println("Seleccione la cita a eliminar: ");
        elim = sc.nextInt();
        sc.nextLine();
@@ -154,9 +163,9 @@ public class Cita {
                 iter.remove();
                 System.out.println("Cita eliminada");  
            }
-       }                   
+       }                  
                 
-       }while(elim<contador);
+       
     } 
         
     
@@ -165,12 +174,19 @@ public class Cita {
         System.out.println("Ingrese la fecha para consultar su cita:");
         String consulta = sc.nextLine();
         LocalDate consultarCit= LocalDate.parse(consulta);
+        int n = 0;
         for (Cita cit:arrayCita){
-            if(cit.getFechaCita().equals(consulta)){
+            if(cit.getFechaCita().equals(consultarCit)){
                 System.out.println(cit);
+                n=1;
             }
+            
+            }
+        if (n==0){
+                System.out.println("No se encontraron citas en esa fecha");   
         }
         sc.close();
+        
     }
     
 
@@ -189,6 +205,11 @@ public class Cita {
         return Objects.equals(this.fechaCita, other.fechaCita)&&Objects.equals(this.horaCita, other.horaCita)&&Objects.equals(this.cliente, other.cliente);
             
         
+    }
+
+    @Override
+    public String toString() {
+        return "Cita{" + "Fecha de la cita: " + fechaCita + "\nHora de la cita: " + horaCita + "\nNombre del cliente: " + cliente.getNombre() + "\nNombre del encargado: " + encargado.getNombre() + '}';
     }
 
     

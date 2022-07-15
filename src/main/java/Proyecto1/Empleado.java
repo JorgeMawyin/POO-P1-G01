@@ -21,6 +21,7 @@ public class Empleado extends Persona implements Iterator{
         super(cedula, nombre, telefono, email);
         this.estadoEmpleado = estadoEmpleado;
         this.serviciosEmpleado = serviciosEmpleado;
+        listaEmpleados.add(this);
     }
     
     public Empleado(String cedula, String nombre, String telefono, String email, Boolean estadoEmpleado, TipoServicio servicioEmpleado){
@@ -28,6 +29,7 @@ public class Empleado extends Persona implements Iterator{
         this.estadoEmpleado = estadoEmpleado;
         serviciosEmpleado = new ArrayList <TipoServicio> ();
         this.serviciosEmpleado.add(servicioEmpleado);
+        listaEmpleados.add(this);
     }
     
     //getters
@@ -51,7 +53,7 @@ public class Empleado extends Persona implements Iterator{
     
     @Override
     public String toString(){
-        System.out.println("Información del servicio: ");
+        System.out.println("Información del empleado: ");
         if(estadoEmpleado){
             return(super.toString()+"\nEstado: Activo");
         }else{

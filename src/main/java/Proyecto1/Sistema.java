@@ -15,10 +15,12 @@ public class Sistema {
          
         
     public static void main(String[] args) {
-        Servicio s1 = new Servicio(TipoServicio.TerapiaDeLenguaje,10,555,true);
-        
+     for (Cita cit:Cita.arrayCita){
+        System.out.println(cit);
+   
+        }   
        
-        
+        Sistema.inicializarSistema();
         
         
         Scanner sc = new Scanner(System.in);
@@ -55,9 +57,12 @@ public class Sistema {
                 switch(opcionCita){
                     case 1:
                         Cita.crearCita();
+                        Cita.consultarCita();
                         break;
                     case 2:
                         Cita.eliminarCita();
+                        Cita.consultarCita();
+
                         break;
                     case 3:
                         Cita.consultarCita();
@@ -99,4 +104,18 @@ public class Sistema {
         
         sc.close();
     }
+    
+    
+    public static void inicializarSistema(){
+        Servicio s1 = new Servicio(TipoServicio.TerapiaDeLenguaje,10,555,true);
+        Servicio s2 = new Servicio(TipoServicio.TerapiaPsicopedagógica,20,300,true);
+        Servicio s3 = new Servicio(TipoServicio.TerapiaPsicopedagógica,60,500,false);
+        Empleado e1 = new Empleado("0902348539", "Bolivar Avendaño", "0929385532", "boav@espol.edu.ec", true, TipoServicio.TerapiaDeLenguaje);
+        Cliente c1 = new Cliente("0439240392", "Jennifer Illych", "0984738283","jenil@espol.edu.ec",new Representante("0293844839","Illych Pepe", "09392848543", "illych@gmail.com"));
+        Cliente c2 = new Cliente("05449240392", "Emilio Romo", "0984745683","emirom@espol.edu.ec",new Representante("048524839","Papa Romo", "0987455543", "romopapa@gmail.com"));
+        Cita cita1 = new Cita("2022-07-16","19:00:00",c1,e1,s1);
+        Cita cita2 = new Cita("2023-01-01","01:00:00",c2,e1,s2);
+        Atencion a1 = new Atencion(true, "00:20:00",new Cita("2003-01-23","14:00:00",c1,e1,s3),e1);
+        
+    }           
 }
