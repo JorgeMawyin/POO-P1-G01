@@ -9,12 +9,12 @@ package Proyecto1;
  * @author Jorge Mawyin, Ricardo Freire, Kevin Roldan
  */
 public class Representante extends Persona {
-    
+    //Creacion del constructor
     public Representante(String cedula, String nombre, String telefono, String email){
         super(cedula, nombre, telefono, email);
     }
     
-    
+    @Override
     public String toString(){
         return super.toString();
     }

@@ -15,24 +15,16 @@ import java.util.Iterator;
 public class Cliente extends Persona implements Iterator{
     //Creación de atributos privados
     private Representante datosRepresentante;
+    //Creacion de la lista static tipo Cliente
     public static ArrayList <Cliente> arrayCliente= new ArrayList();
     
-    //Creación de constructor
+    //Creación de constructor que sirve para agregar clientes
     public Cliente(String cedula, String nombre, String telefono, String email, Representante datosRepresentante){
         super(cedula, nombre, telefono, email);
         this.datosRepresentante = datosRepresentante;
         arrayCliente.add(this);
     }
     
-    //Creación de métodos
-    public static Cliente buscarCliente(String c){
-        for (Cliente listaC:arrayCliente){
-            if (listaC.getCedula().equals(c)){
-                return listaC;
-            }
-        }
-        return null;
-    }
     
     //Creación de getter y setter
     public Representante getDatosRepresentante(){
@@ -43,6 +35,17 @@ public class Cliente extends Persona implements Iterator{
         this.datosRepresentante = datosRepresentante;
     }
     
+    //Creación de método buscar cliente
+    public static Cliente buscarCliente(String c){
+        for (Cliente listaC:arrayCliente){
+            if (listaC.getCedula().equals(c)){
+                return listaC;
+            }
+        }
+        return null;
+    }
+    
+    //Creación de método mostar cliente
     public static void mostrarClientes(){
         System.out.println("Información de los clientes:\n");
         Iterator <Cliente> iter = arrayCliente.iterator();
@@ -52,10 +55,6 @@ public class Cliente extends Persona implements Iterator{
         }
     }
     
-    public void editarCliente(String nombre, String email, Representante datosRepresentante){
-        
-    }
-
     @Override
     public boolean hasNext() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

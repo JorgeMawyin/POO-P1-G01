@@ -34,7 +34,10 @@ public class Sistema {
         System.out.println("Ingrese la opción deseada:");
         int opcion = sc.nextInt();
         sc.nextLine();
-      
+        
+        
+        do{
+        System.out.println("\u000C");
         switch (opcion){
             case 1:
                 Servicio.mostrarServicios();
@@ -57,12 +60,9 @@ public class Sistema {
                 switch(opcionCita){
                     case 1:
                         Cita.crearCita();
-                        Cita.consultarCita();
                         break;
                     case 2:
                         Cita.eliminarCita();
-                        Cita.consultarCita();
-
                         break;
                     case 3:
                         Cita.consultarCita();
@@ -100,12 +100,27 @@ public class Sistema {
             default:
                 break;
         }
-       
-        
+            System.out.println("Pulse enter para regresar al menú");
+            String limpiar = sc.nextLine();
+            if (limpiar == ""){
+                System.out.println("\u000C");
+            }
+            System.out.println("MENU");
+            System.out.println("1. Servicio");
+            System.out.println("2. Empleado");
+            System.out.println("3. Clientes");
+            System.out.println("4. Citas");
+            System.out.println("5. Atenciones");
+            System.out.println("6. Salir");
+            System.out.print("\nIngrese la opción deseada:");
+            opcion = sc.nextInt();
+            sc.nextLine();
+        }while(opcion!=6);
+        System.out.println("Gracias por preferirnos :D");
         sc.close();
     }
     
-    
+    //Creación del método inicializarSistema con los objetos solicitados
     public static void inicializarSistema(){
         Servicio s1 = new Servicio(TipoServicio.TerapiaDeLenguaje,10,555,true);
         Servicio s2 = new Servicio(TipoServicio.TerapiaPsicopedagógica,20,300,true);
@@ -117,5 +132,5 @@ public class Sistema {
         Cita cita2 = new Cita("2023-01-01","01:00:00",c2,e1,s2);
         Atencion a1 = new Atencion(true, "00:20:00",new Cita("2003-01-23","14:00:00",c1,e1,s3),e1);
         
-    }           
+    } 
 }

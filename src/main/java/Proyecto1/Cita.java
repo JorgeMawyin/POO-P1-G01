@@ -10,13 +10,6 @@ import java.util.Scanner;
 import java.util.Iterator;
 import java.util.Objects;
 
-/*
-+ crearCita(String fechaCita, String horaCita, Cliente cliente, Empleado encargado): void
-+ eliminarCita(String cedula): void
-+ consutarCita(String fechaCita): void
-//setters&getters
-*/
-
 /**
  *
  * @author Jorge Mawyin, Ricardo Freire, Kevin Roldan
@@ -29,6 +22,7 @@ public class Cita {
     private Cliente cliente;
     private Empleado encargado;
     private Servicio servicio;
+    //Creación de un array static tipo cita
     public static ArrayList <Cita> arrayCita= new ArrayList();
     
     //Creación de getters and setters
@@ -88,39 +82,45 @@ public class Cita {
      
     }   
     
-    //Creación de los métodos
-     
+    //Creación del método Crear Cita
     public static void crearCita(){
         Scanner sc = new Scanner(System.in);
         System.out.println("CREACIÓN DE CITA");
         System.out.print("Ingrese la fecha de la cita (AAAA-MM-DD): ");
         String recfecha = sc.nextLine();
-        System.out.println("Ingrese la hora de la cita(HH:MM:SS): ");
+        System.out.print("\nIngrese la hora de la cita(HH:MM:SS): ");
         String recHora = sc.nextLine();
-        System.out.println("Ingrese la cédula del cliente: ");
+        System.out.print("\nIngrese la cédula del cliente: ");
         String recCedulaC = sc.nextLine();
         Cliente nuevoCliente = Cliente.buscarCliente(recCedulaC);
         if (nuevoCliente == null){
-        System.out.println("INGRESE LOS DATOS DEL CLIENTE");
-        System.out.println("Ingrese el nombre del cliente: ");
+        System.out.print("\nINGRESE LOS DATOS DEL CLIENTE");
+        System.out.print("\nIngrese el nombre del cliente: ");
         String recNombreC = sc.nextLine();
-        System.out.println("Ingrese el teléfono del cliente: ");
+        System.out.print("\nIngrese el teléfono del cliente: ");
         String recTelefonoC = sc.nextLine();
-        System.out.println("Ingrese el e-mail del cliente: ");
+        System.out.print("\nIngrese el e-mail del cliente: ");
         String recEmailC= sc.nextLine();
-        System.out.println("INGRESE LOS DATOS DEL REPRESENTANTE DEL CLIENTE");
-        System.out.println("Ingrese el nombre del Representante: ");
+        System.out.print("\nINGRESE LOS DATOS DEL REPRESENTANTE DEL CLIENTE");
+        System.out.print("\nIngrese el nombre del Representante: ");
         String recNombreR = sc.nextLine();
-        System.out.println("Ingrese la cédula del Representante: ");
+        System.out.print("\nIngrese la cédula del Representante: ");
         String recCedulaR = sc.nextLine();
-        System.out.println("Ingrese el teléfono del Representante: ");
+        System.out.print("\nIngrese el teléfono del Representante: ");
         String recTelefonoR = sc.nextLine();
-        System.out.println("Ingrese el e-mail del Representante: ");
+        System.out.print("\nIngrese el e-mail del Representante: ");
         String recEmailR= sc.nextLine();
         Representante nuevoR = new Representante(recCedulaR, recNombreR, recTelefonoR, recEmailR);
         nuevoCliente = new Cliente(recCedulaC, recNombreC, recTelefonoC, recEmailC, nuevoR);
         }
-        System.out.println("Ingrese la cédula persona encargada de la cita: ");
+        System.out.print("\nServicios: ");
+        Servicio.mostrarServicios();
+        System.out.print("\nSeleccione un servicio: ");
+        int recOpcion = sc.nextInt();
+        sc.nextLine();
+        Servicio recServicio = Servicio.arrayServ.get(recOpcion-1);
+        
+        System.out.print("\nIngrese la cédula persona encargada de la cita: ");
         String recCedulaEncargado = sc.nextLine();
                         
         Empleado empleado = null;
@@ -129,10 +129,10 @@ public class Cita {
                 empleado = e;
             }
         }
-        //Cita nuevaCita = new Cita(recfecha, recHora, nuevoCliente,empleado);
+        Cita nuevaCita = new Cita(recfecha, recHora, nuevoCliente,empleado,recServicio);
      }
      
-     
+    //Creación del método Eliminar Cita 
     public static void eliminarCita(){
        Iterator <Cita> iter = arrayCita.iterator();
         
@@ -168,7 +168,7 @@ public class Cita {
        
     } 
         
-    
+    //Creación del método Consultar Cita
     public static void consultarCita(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese la fecha para consultar su cita:");
@@ -189,7 +189,7 @@ public class Cita {
         
     }
     
-
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -209,7 +209,7 @@ public class Cita {
 
     @Override
     public String toString() {
-        return "Cita{" + "Fecha de la cita: " + fechaCita + "\nHora de la cita: " + horaCita + "\nNombre del cliente: " + cliente.getNombre() + "\nNombre del encargado: " + encargado.getNombre() + '}';
+        return "Cita:" + "\nFecha de la cita: " + fechaCita + "\nHora de la cita: " + horaCita + "\nNombre del cliente: " + cliente.getNombre() + "\nNombre del encargado: " + encargado.getNombre() + "\nServicio: "+servicio.getNombreServicio();
     }
 
     

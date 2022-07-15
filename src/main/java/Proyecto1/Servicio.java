@@ -73,16 +73,17 @@ public class Servicio implements Iterator {
     }
     
     public static void mostrarServicios(){
+        int num = 1;
+        System.out.println("Información del servicio: ");
         Iterator <Servicio> iter = arrayServ.iterator();
         while(iter.hasNext()){
             Servicio serv = iter.next();
-            System.out.println(serv);
+            System.out.println(num+"."+serv);
+            num +=1;
         }
     }
 @Override
     public String toString(){
-        
-        System.out.println("Información del servicio: ");
         if(estado){
             return("Nombre del servicio: "+nombreServicio+"\n Duración: "+duracionAtencion+"\n Precio: "+precio+"\n Estado: Activo");
         }else{

@@ -16,6 +16,7 @@ public class Atencion {
     private LocalTime duracionReal;
     private Cita cita;
     private Empleado encargadoAtencion;
+    //Creacion de la lista static tipo Atencion
     public static ArrayList <Atencion> arrayAtencion= new ArrayList();
 
     //Creacion de los métodos getters and setters
@@ -62,7 +63,7 @@ public class Atencion {
     }
     
     
-    //Creación métodos
+    //Creación del método registar atención
     public static void registrarAtencion(String cedula){
        
         Scanner sc= new Scanner(System.in);  
@@ -88,7 +89,7 @@ public class Atencion {
          
         if (asistCliente){
             
-            System.out.println("¿Cuanto duro la cita? Ingrese la hora con el formato 'hora:min:seg': ");
+            System.out.println("¿Cuanto duro la cita?(HH:MM:SS): ");
             String duracionCita = (sc.nextLine());
             System.out.println("¿Cual de los siguientes empleados atendio esta cita?");
             cont =1;
@@ -107,6 +108,7 @@ public class Atencion {
             sc.close();
     }
     
+    //Creación del método consultar atención
     public static void consultarAtencion(){
         Scanner sc = new Scanner(System.in);
         
@@ -136,7 +138,7 @@ public class Atencion {
                 }
                 break;
             case 3:
-                System.out.println("Ingrese la fecha de la cita con el formato 'año-mes-dia':");
+                System.out.println("Ingrese la fecha de la cita con el formato (AAAA-MM-DD):");
                 LocalDate fechaCit = LocalDate.parse(sc.nextLine());
                 for (Atencion aten:arrayAtencion){
                     if(aten.getCita().getFechaCita().equals(fechaCit)){
@@ -153,13 +155,12 @@ public class Atencion {
 
     @Override
     public String toString() {
-        System.out.println("Información del empleado: ");
         if(asistenciaCliente){
-return "Atencion{" + "\nEl cliente asistió a la cita " + "\nDuración de la cita: " + duracionReal + "\nFecha de la cita: " + cita.getFechaCita() + "\nServicio de cita: "+cita.getServicio()+ "encargadoAtencion=" + encargadoAtencion + '}';
+            return "Atencion:" + "\nEl cliente asistió a la cita " + "\nDuración de la cita: " + duracionReal + "\nFecha de la cita: " + cita.getFechaCita() + "\nServicio de cita: "+cita.getServicio().getNombreServicio()+ "\nEncargado de la atención: " + encargadoAtencion.getNombre();
         }else{
-            return(super.toString()+"\nEstado: Inactivo");}
+            return "Atencion:" + "\nEl cliente no asistió a la cita " + "\nDuración de la cita: " + duracionReal + "\nFecha de la cita: " + cita.getFechaCita() + "\nServicio de cita: "+cita.getServicio().getNombreServicio()+ "\nEncargado de la atención: " + encargadoAtencion.getNombre();
         
     }
-    
-    
+       
+}
 }
