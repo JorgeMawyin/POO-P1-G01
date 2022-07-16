@@ -15,10 +15,7 @@ public class Sistema {
          
         
     public static void main(String[] args) {
-     for (Cita cit:Cita.arrayCita){
-        System.out.println(cit);
-   
-        }   
+       
        
         Sistema.inicializarSistema();
         
