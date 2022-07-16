@@ -87,9 +87,9 @@ public class Servicio implements Iterator {
 @Override
     public String toString(){
         if(estado){
-            return("Nombre del servicio: "+nombreServicio+"\n Duración: "+duracionAtencion+"\n Precio: "+precio+"\n Estado: Activo");
+            return("Nombre del servicio: "+nombreServicio+"\n Duración: "+duracionAtencion+" minutos"+"\n Precio: "+precio+"\n Estado: Activo\n");
         }else{
-            return("Nombre del servicio: "+nombreServicio+"\n Duración: "+duracionAtencion+"\n Precio: "+precio+"\n Estado: Inactivo");
+            return("Nombre del servicio: "+nombreServicio+"\n Duración: "+duracionAtencion+" minutos"+"\n Precio: "+precio+"\n Estado: Inactivo\n");
         }
      
     }
