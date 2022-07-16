@@ -77,9 +77,15 @@ public class Sistema {
                 sc.nextLine();
                 switch(opcionAtencion){
                     case 1:
-                        System.out.println("Ingrese la cedula del cliente cuya cita se registrara: ");
+                        System.out.println("Ingrese la cedula del cliente cuya cita se registrará: ");
                         String cedula = sc.nextLine();
-                        Atencion.registrarAtencion(cedula);
+                        if (Cliente.buscarCliente(cedula)== null){
+                            System.out.println("Este cliente no existe");
+                        }else{
+                            Atencion.registrarAtencion(cedula);
+                        }
+                       
+                        
                         
                         
                         

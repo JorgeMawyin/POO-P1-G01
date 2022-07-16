@@ -80,6 +80,7 @@ public class Atencion {
         sc.nextLine();
         Cita citaRegistro = Cita.arrayCita.get(numeCita-1);
         
+        
         System.out.println("¿El cliente asistio a la cita? (S/N): ");
         String bool= sc.nextLine();
         boolean asistCliente;

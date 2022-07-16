@@ -130,6 +130,7 @@ public class Cita {
             }
         }
         Cita nuevaCita = new Cita(recfecha, recHora, nuevoCliente,empleado,recServicio);
+        System.out.println("Cita creada exitosamente :D");
      }
      
     //Creación del método Eliminar Cita 
@@ -142,12 +143,19 @@ public class Cita {
        ArrayList<Cita> citasCliente=new ArrayList<Cita>();
        short contador=1;
        for (Cita cita:arrayCita){
-           if(cita.getCliente().getCedula().equals(cedulaCli)){
-           System.out.println(contador+".- "+cita);
-           citasCliente.add(cita);
-           contador++;
-           }
+          if(cita.getCliente().getCedula().equals(cedulaCli)){
+          //System.out.println(contador+".- "+cita);
+          citasCliente.add(cita);
+          //contador++;
+          }  
+       }
+       if (citasCliente.size()==0){
+           System.out.println("El cliente no tiene citas");
             
+       }else{
+          for (Cita cita:citasCliente){
+            System.out.println(contador+".- "+cita);
+            contador++;
        }
        System.out.println(contador+".- Salir");
        int elim;
@@ -165,13 +173,13 @@ public class Cita {
            }
        }                  
                 
-       
+       } 
     } 
         
     //Creación del método Consultar Cita
     public static void consultarCita(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Ingrese la fecha para consultar su cita:");
+        System.out.println("Ingrese la fecha para consultar su cita (AAAA-MM-DD):");
         String consulta = sc.nextLine();
         LocalDate consultarCit= LocalDate.parse(consulta);
         int n = 0;
@@ -185,7 +193,8 @@ public class Cita {
         if (n==0){
                 System.out.println("No se encontraron citas en esa fecha");   
         }
-        sc.close();
+        
+        //sc.close();
         
     }
     
