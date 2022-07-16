@@ -78,6 +78,9 @@ public class Atencion {
         System.out.println("Seleccione la cita a registrar: ");
         int numeCita= sc.nextInt();        
         sc.nextLine();
+        if(numeCita >= Cita.arrayCita.size()){
+            System.out.println("Esta cita no existe");
+        }else{
         Cita citaRegistro = Cita.arrayCita.get(numeCita-1);
         
         
@@ -106,7 +109,8 @@ public class Atencion {
         }else{
             System.out.println("Atención no Registrada");
         }
-            sc.close();
+        }
+        
     }
     
     //Creación del método consultar atención
@@ -126,6 +130,8 @@ public class Atencion {
                 for (Atencion aten:arrayAtencion){
                     if(aten.getEncargadoAtencion().getCedula().equals(cedulaEmp)){
                         System.out.println(aten);  
+                    }else{
+                        System.out.println("Esta cedula no tiene cita");
                     }
                 }
                 break;
@@ -135,6 +141,8 @@ public class Atencion {
                 for (Atencion aten:arrayAtencion){
                     if(aten.getCita().getCliente().getCedula().equals(cedulaCli)){
                         System.out.println(aten);
+                    }else{
+                        System.out.println("Esta cedula no tiene cita");
                     }
                 }
                 break;
@@ -144,6 +152,8 @@ public class Atencion {
                 for (Atencion aten:arrayAtencion){
                     if(aten.getCita().getFechaCita().equals(fechaCit)){
                         System.out.println(aten);
+                    }else{
+                        System.out.println("Esta fecha no tiene cita");
                     }
                 }
                 break;
@@ -151,7 +161,6 @@ public class Atencion {
                 break;
                 
          }
-       sc.close(); 
     }
 
     @Override

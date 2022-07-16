@@ -194,7 +194,6 @@ public class Cita {
                 System.out.println("No se encontraron citas en esa fecha");   
         }
         
-        //sc.close();
         
     }
     
