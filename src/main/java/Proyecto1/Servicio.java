@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -19,6 +19,17 @@ public class Servicio implements Iterator {
     private double precio;
     private boolean estado;  
     public static ArrayList <Servicio> arrayServ= new ArrayList();
+    
+    
+    //Creacion de constructor
+
+    public Servicio(TipoServicio nombreServicio, int duracionAtencion, double precio, boolean estado) {
+        this.nombreServicio = nombreServicio;
+        this.duracionAtencion = duracionAtencion;
+        this.precio = precio;
+        this.estado = estado;
+        arrayServ.add(this);
+    }
     
     // Creacion de Getters and Setters
 
@@ -54,17 +65,8 @@ public class Servicio implements Iterator {
         this.estado = estado;
     }
     
-    
-    //Creacion de constructor
-
-    public Servicio(TipoServicio nombreServicio, int duracionAtencion, double precio, boolean estado) {
-        this.nombreServicio = nombreServicio;
-        this.duracionAtencion = duracionAtencion;
-        this.precio = precio;
-        this.estado = estado;
-        arrayServ.add(this);
-        
-    }
+    //se editan los servicios con los setters
+    //se agregan los servicios con el constructor
     
     //Creacion de metodos
     public void eliminarServicios(){

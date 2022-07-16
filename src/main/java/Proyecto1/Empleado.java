@@ -32,6 +32,9 @@ public class Empleado extends Persona implements Iterator{
         listaEmpleados.add(this);
     }
     
+    //se editan los empleados con los setters
+    //se agregan los empleados con el constructor
+    
     //getters
     public boolean estadoEmpleado(){
         return estadoEmpleado;
@@ -42,7 +45,13 @@ public class Empleado extends Persona implements Iterator{
         this.estadoEmpleado = estadoEmpleado;
     }
     
-    //Creación métodos
+    //Creación método eliminarEmpleados
+    public void eliminarEmpleado(){
+        this.estadoEmpleado = false;
+    }
+    
+    
+    //Creación método mostrarEmpleados 
     public static void mostrarEmpleados(){
         Iterator <Empleado> iter = listaEmpleados.iterator();
         while(iter.hasNext()){

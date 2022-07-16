@@ -1,4 +1,4 @@
-package Proyecto1;
+ package Proyecto1;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,13 +18,15 @@ public class Cliente extends Persona implements Iterator{
     //Creacion de la lista static tipo Cliente
     public static ArrayList <Cliente> arrayCliente= new ArrayList();
     
-    //Creación de constructor que sirve para agregar clientes
+    //Creación de constructor que sirve para agregar clientes como un método agregarClientes()
     public Cliente(String cedula, String nombre, String telefono, String email, Representante datosRepresentante){
         super(cedula, nombre, telefono, email);
         this.datosRepresentante = datosRepresentante;
         arrayCliente.add(this);
     }
     
+    //se editan los clientes con los setters
+    //se agregan los clientes con el constructor
     
     //Creación de getter y setter
     public Representante getDatosRepresentante(){
