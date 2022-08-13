@@ -8,7 +8,7 @@ package Proyecto1;
  *
  * @author Jorge Mawyin, Ricardo Freire, Kevin Roldan
  */
-enum TipoServicio {
+public enum TipoServicio {
     TerapiaDeLenguaje,
     TerapiaPsicopedagógica;
 }

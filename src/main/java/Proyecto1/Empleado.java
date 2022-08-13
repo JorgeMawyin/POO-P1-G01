@@ -35,8 +35,11 @@ public class Empleado extends Persona implements Iterator{
     //se editan los empleados con los setters
     //se agregan los empleados con el constructor
     
+    public void setTipoServicio(TipoServicio servicioEmpleado){
+        this.serviciosEmpleado = serviciosEmpleado;
+    }
     //getters
-    public boolean estadoEmpleado(){
+    public boolean getEstadoEmpleado(){
         return estadoEmpleado;
     } 
     
@@ -54,15 +57,15 @@ public class Empleado extends Persona implements Iterator{
     //Creación método mostrarEmpleados 
     public static void mostrarEmpleados(){
         Iterator <Empleado> iter = listaEmpleados.iterator();
+        int i = 1;
         while(iter.hasNext()){
             Empleado emp = iter.next();
-            System.out.println(emp);
+            System.out.println(i+". "+emp);
         }
     }
     
     @Override
     public String toString(){
-        System.out.println("Información del empleado: ");
         if(estadoEmpleado){
             return(super.toString()+"\nEstado: Activo");
         }else{

@@ -6,6 +6,7 @@ package Proyecto1;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Scanner;
 /**
  *
  * @author Jorge Mawyin, Ricardo Freire, Kevin Roldan
@@ -57,7 +58,7 @@ public class Servicio implements Iterator {
         this.precio = precio;
     }
 
-    public boolean isEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
@@ -76,7 +77,6 @@ public class Servicio implements Iterator {
     
     public static void mostrarServicios(){
         int num = 1;
-        System.out.println("Información del servicio: ");
         Iterator <Servicio> iter = arrayServ.iterator();
         while(iter.hasNext()){
             Servicio serv = iter.next();
@@ -84,6 +84,7 @@ public class Servicio implements Iterator {
             num +=1;
         }
     }
+    
 @Override
     public String toString(){
         if(estado){

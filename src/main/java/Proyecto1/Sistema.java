@@ -28,7 +28,7 @@ public class Sistema {
         System.out.println("4. Citas");
         System.out.println("5. Atenciones");
         System.out.println("6. Salir");
-        System.out.println("Ingrese la opción deseada:");
+        System.out.print("Ingrese la opción deseada: ");
         int opcion = sc.nextInt();
         sc.nextLine();
         
@@ -37,12 +37,243 @@ public class Sistema {
         System.out.println("\u000C");
         switch (opcion){
             case 1:
+                System.out.println("INFORMACIÓN DE LOS SERVICIOS");
                 Servicio.mostrarServicios();
+                System.out.println("MENU SERVICIOS");
+                System.out.println("1. Agregar Servicio");
+                System.out.println("2. Editar Servicio");
+                System.out.println("3. Eliminar Servicio");
+                System.out.println("4. Salir");
+                System.out.print("Ingrese la opción deseada: ");
+                int opcionServ = sc.nextInt();
+                sc.nextLine();
+                
+                switch(opcionServ){
+                    case 1:
+                        System.out.println("AGREGAR SERVICIO");
+                        
+                        TipoServicio[] tiposS = TipoServicio.values();
+                        for (int i = 0; i < tiposS.length; i++){
+                            System.out.println(i+1+". "+tiposS[i]);
+                        }
+                        System.out.print("Seleccione un tipo de servicio: ");
+                        int recTipo = sc.nextInt();
+                        sc.nextLine();
+                        System.out.print("Ingrese la duración del servicio en minutos: ");
+                        int recDur = sc.nextInt();
+                        sc.nextLine();
+                        System.out.print("Ingrese el précio del servicio: ");
+                        double recPre = sc.nextDouble();
+                        sc.nextLine();
+                        System.out.print("Ingrese el estado del servicio (1 si es activo y 0 si está inactivo): ");
+                        int recEst = sc.nextInt();
+                        sc.nextLine();
+                        boolean estad;
+                        if (recEst == 1){
+                            estad = true;
+                        }else{
+                            estad = false;
+                        }
+                        Servicio nuevoS = new Servicio(tiposS[recTipo], recDur, recPre, estad);
+                        System.out.println("Servicio Agregado");
+                        break;
+                    case 2:
+                        System.out.println("EDITAR SERVICIOS");
+                        System.out.println("SERVICIOS");
+                        Servicio.mostrarServicios();
+                        System.out.print("Ingrese el servicio a editar: ");         
+                        int recEdi = sc.nextInt();
+                        sc.nextLine();
+                        System.out.print("Servicio a editar: \n");
+                        String recOpc = "S";
+                        while(recOpc == "S"){
+                            System.out.println( "1. Nombre del servicio"+"\n2. Duración"+"\n3. Precio"+"\n4. Estado");
+                            System.out.print("\nIngrese que campo desea editar: ");
+                            int recCampo = sc.nextInt();
+                            sc.nextLine();
+                            switch(recCampo){
+                                case 1:
+                                    TipoServicio[] tiposServ = TipoServicio.values();
+                                    for (int i = 0; i < tiposServ.length; i++){
+                                    System.out.println(i+1+". "+tiposServ[i]);
+                                    }
+                                    System.out.println("Escoja un nuevo tipo de servicio: ");
+                                    int recTipoServ = sc.nextInt();
+                                    sc.nextLine();
+
+                                    Servicio.arrayServ.get(recEdi-1).setNombreServicio(tiposServ[recTipoServ-1]);
+                                    System.out.println("Tipo de servicio actualizado");
+                                    break;
+                                case 2:
+                                    System.out.print("Ingrese la nueva duración del servicio en minutos: ");
+                                    int recDurEdi = sc.nextInt();
+                                    sc.nextLine();
+                                    Servicio.arrayServ.get(recEdi-1).setDuracionAtencion(recDurEdi);
+                                    System.out.println("Duración actualizada");
+                                    break;
+                                case 3:
+                                    System.out.print("Ingrese el nuevo precio del servicio: ");
+                                    Double recPreEdi = sc.nextDouble();
+                                    Servicio.arrayServ.get(recEdi-1).setPrecio(recPreEdi);
+                                    System.out.println("Precio actualizado");
+                                    break;
+                                case 4:
+                                    if (Servicio.arrayServ.get(recEdi-1).getEstado() == false){
+                                        Servicio.arrayServ.get(recEdi-1).setEstado(true);
+                                    }else{
+                                        Servicio.arrayServ.get(recEdi-1).setEstado(false);
+                                    }
+                                    System.out.println("Estado actualizado");
+                                    break;
+                                default:
+                                    break;
+                            }
+                            System.out.println("Ingrese 'S' para seguir editando o 'N' para salir: ");
+                            recOpc = sc.nextLine();    
+                        }
+                        System.out.println("Servicio Editado");
+                        break;
+                    case 3:
+                        System.out.println("ELIMINAR SERVICIOS");
+                        System.out.println("SERVICIOS");
+                        Servicio.mostrarServicios();
+                        System.out.print("Ingrese el servicio a eliminar: ");
+                        int recEli = sc.nextInt();
+                        sc.nextLine();
+                        for (Servicio s: Servicio.arrayServ){
+                            if (s == Servicio.arrayServ.get(recEli-1)){
+                                s.eliminarServicios();
+                            }
+                        }
+                        break;
+                    case 4:
+                        
+                        break;
+                    default:
+                        break;
+                }                
+                
                 break;
             case 2:
+                System.out.println("INFORMACION DE LOS EMPLEADOS");
                 Empleado.mostrarEmpleados();
+                System.out.println("\nMENU EMPLEADOS");
+                System.out.println("1. Agregar Empleados");
+                System.out.println("2. Editar Empleados");
+                System.out.println("3. Eliminar Empleados");
+                System.out.println("4. Salir");
+                System.out.print("Ingrese la opción deseada: ");
+                int opcionEmple = sc.nextInt();
+                sc.nextLine();
+                switch(opcionEmple){
+                    case 1:
+                        System.out.print("AGREGAR EMPLEADO");
+                        System.out.print("\nIngrese la cédula del empleado: ");
+                        String recCedE = sc.nextLine();
+                        System.out.print("\nIngrese el nombre del empleado: ");
+                        String recNombreE = sc.nextLine();
+                        System.out.print("\nIngrese el teléfono del empleado: ");
+                        String recTelefonoE = sc.nextLine();
+                        System.out.print("\nIngrese el e-mail del empleado: ");
+                        String recEmailE= sc.nextLine();
+                        System.out.print("Ingrese el estado del empleado (1 si es activo y 0 si está inactivo): ");
+                        int recEst = sc.nextInt();
+                        sc.nextLine();
+                        boolean estad;
+                        if (recEst == 1){
+                            estad = true;
+                        }else{
+                            estad = false;
+                        }
+                        TipoServicio[] tiposS = TipoServicio.values();
+                        for (int i = 0; i < tiposS.length; i++){
+                            System.out.println(i+1+". "+tiposS[i]);
+                        }
+                        System.out.print("Seleccione un tipo de servicio: ");
+                        int recTipo = sc.nextInt();
+                        sc.nextLine();
+                        Empleado NewEmpleado = new Empleado(recCedE, recNombreE, recTelefonoE, recEmailE, estad, tiposS[recTipo]);
+                        System.out.println("Empleado Agregado");
+                        break;
+                    case 2:
+                        System.out.print("EDITAR EMPLEADO");
+                        System.out.println("EMPLEADOS");
+                        Empleado.mostrarEmpleados();
+                        System.out.print("Ingrese el empleado a editar: ");
+                        int recEdi = sc.nextInt();
+                        sc.nextLine();
+                        System.out.print("Empleado a editar: \n");   
+                        String recOpc = "S";
+                        while(recOpc == "S"){
+                            System.out.println( "1. Nombre"+"\n2. Telefono"+"\n3. Email"+"\n4. Estado"+"\n5. Tipo Servicio");
+                            System.out.print("\nIngrese que campo desea editar: ");
+                            int recCampo = sc.nextInt();
+                            sc.nextLine();
+                            switch(recCampo){
+                                case 1:
+                                    System.out.println("Ingrese un nuevo nombre:");
+                                    String nuevoNombre = sc.nextLine();
+                                    Empleado.listaEmpleados.get(recEdi-1).setNombre(nuevoNombre);
+                                    System.out.println("Nombre del empleado editado");
+                                    break;
+                                case 2:
+                                    System.out.println("Ingrese un nuevo telefono:");
+                                    String nuevoTelef = sc.nextLine();
+                                    Empleado.listaEmpleados.get(recEdi-1).setTelefono(nuevoTelef);
+                                    System.out.println("Telefono del empleado editado"); 
+                                    break;
+                                case 3:
+                                    System.out.println("Ingrese un nuevo email:");
+                                    String nuevoEmail = sc.nextLine();
+                                    Empleado.listaEmpleados.get(recEdi-1).setEmail(nuevoEmail);
+                                    System.out.println("Email del empleado editado");
+                                    break;
+                                case 4:
+                                    if (Empleado.listaEmpleados.get(recEdi-1).getEstadoEmpleado()== false){
+                                        Empleado.listaEmpleados.get(recEdi-1).setEstadoEmpleado(true);
+                                    }else{
+                                        Empleado.listaEmpleados.get(recEdi-1).setEstadoEmpleado(false);
+                                    }
+                                    System.out.println("Estado actualizado");
+                                    break;
+                                case 5:
+                                    TipoServicio[] serv = TipoServicio.values();
+                                    for (int i = 0; i < serv.length; i++){
+                                        System.out.println(i+1+". "+serv[i]);
+                                    }
+                                    System.out.print("Seleccione un tipo de servicio: ");
+                                    int nuevoServ = sc.nextInt();
+                                    sc.nextLine();
+                                    Empleado.listaEmpleados.get(recEdi-1).setTipoServicio(serv[nuevoServ-1]);
+                                    System.out.println("Tipo de servicio actualizado");
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        
+                        break;
+                    case 3:
+                        System.out.println("ELIMINAR EMPLEADO");
+                        System.out.println("EMPLEADOS");
+                        Empleado.mostrarEmpleados();
+                        System.out.print("Ingrese el servicio a eliminar: ");
+                        int recEli = sc.nextInt();
+                        sc.nextLine();
+                        for (Empleado e: Empleado.listaEmpleados){
+                            if (e == Empleado.listaEmpleados.get(recEli-1)){
+                                e.eliminarEmpleado();
+                            }
+                        }
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        break;
+                }
                 break;
             case 3:
+                System.out.println("INFORMACIÓN DE LOS CLIENTES");
                 Cliente.mostrarClientes();
                 break;
             case 4:
@@ -50,6 +281,7 @@ public class Sistema {
                 System.out.println("1. Crear cita");
                 System.out.println("2. Eliminar cita");
                 System.out.println("3. Consultar cita");
+                System.out.println("4. Salir");
                 System.out.print("Ingrese la opción deseada: ");
                 int opcionCita = sc.nextInt();
                 sc.nextLine();
@@ -63,6 +295,8 @@ public class Sistema {
                         break;
                     case 3:
                         Cita.consultarCita();
+                        break;
+                    case 4:
                         break;
                     default:
                         break;
@@ -136,4 +370,8 @@ public class Sistema {
         Atencion a1 = new Atencion(true, "00:20:00",new Cita("2003-01-23","14:00:00",c1,e1,s3),e1);
         
     } 
+
+    public static void main() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
