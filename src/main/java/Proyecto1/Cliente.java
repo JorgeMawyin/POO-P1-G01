@@ -49,7 +49,6 @@ public class Cliente extends Persona implements Iterator{
     
     //Creación de método mostar cliente
     public static void mostrarClientes(){
-        System.out.println("Información de los clientes:\n");
         Iterator <Cliente> iter = arrayCliente.iterator();
         while(iter.hasNext()){
             Cliente clt = iter.next();

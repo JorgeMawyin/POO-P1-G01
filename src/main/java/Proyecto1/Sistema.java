@@ -86,7 +86,7 @@ public class Sistema {
                         sc.nextLine();
                         System.out.print("Servicio a editar: \n");
                         String recOpc = "S";
-                        while(recOpc == "S"){
+                        while(recOpc.equals("S")){
                             System.out.println( "1. Nombre del servicio"+"\n2. Duración"+"\n3. Precio"+"\n4. Estado");
                             System.out.print("\nIngrese que campo desea editar: ");
                             int recCampo = sc.nextInt();
@@ -196,7 +196,7 @@ public class Sistema {
                         System.out.println("Empleado Agregado");
                         break;
                     case 2:
-                        System.out.print("EDITAR EMPLEADO");
+                        System.out.println("EDITAR EMPLEADO");
                         System.out.println("EMPLEADOS");
                         Empleado.mostrarEmpleados();
                         System.out.print("Ingrese el empleado a editar: ");
@@ -204,7 +204,7 @@ public class Sistema {
                         sc.nextLine();
                         System.out.print("Empleado a editar: \n");   
                         String recOpc = "S";
-                        while(recOpc == "S"){
+                        while(recOpc.equals("S")){
                             System.out.println( "1. Nombre"+"\n2. Telefono"+"\n3. Email"+"\n4. Estado"+"\n5. Tipo Servicio");
                             System.out.print("\nIngrese que campo desea editar: ");
                             int recCampo = sc.nextInt();
@@ -250,7 +250,10 @@ public class Sistema {
                                 default:
                                     break;
                             }
+                            System.out.println("Ingrese 'S' para seguir editando o 'N' para salir: ");
+                            recOpc = sc.nextLine();
                         }
+                        
                         
                         break;
                     case 3:
@@ -275,6 +278,121 @@ public class Sistema {
             case 3:
                 System.out.println("INFORMACIÓN DE LOS CLIENTES");
                 Cliente.mostrarClientes();
+                System.out.println("\nMENU CLIENTES");
+                System.out.println("1. Agregar Cliente");
+                System.out.println("2. Editar Cliente");
+                System.out.println("3. Salir");
+                System.out.print("Ingrese la opción deseada: ");
+                int opcionCliente = sc.nextInt();
+                sc.nextLine();
+                switch(opcionCliente){
+                    case 1:
+                        System.out.println("AGREGAR CLIENTES");
+                        System.out.print("\nIngrese la cédula del cliente: ");
+                        String newCed = sc.nextLine();
+                        System.out.print("\nIngrese el nombre del cliente: ");
+                        String newNom = sc.nextLine();
+                        System.out.print("\nIngrese el teléfono del cliente: ");
+                        String newTelef = sc.nextLine();
+                        System.out.print("\nIngrese el e-mail del cliente: ");
+                        String newEmail= sc.nextLine();
+                        System.out.print("\nIngrese la cédula del representante: ");
+                        String repreCed= sc.nextLine();
+                        Representante nuevoRepresentante = Representante.buscarRepresentante(repreCed);
+                        if(nuevoRepresentante == null){
+                            System.out.print("\nINGRESE LOS DATOS DEL REPRESENTANTE DEL CLIENTE");
+                            System.out.print("\nIngrese el nombre del Representante: ");
+                            String recNombreR = sc.nextLine();
+                            System.out.print("\nIngrese la cédula del Representante: ");
+                            String recCedulaR = sc.nextLine();
+                            System.out.print("\nIngrese el teléfono del Representante: ");
+                            String recTelefonoR = sc.nextLine();
+                            System.out.print("\nIngrese el e-mail del Representante: ");
+                            String recEmailR= sc.nextLine();
+                            nuevoRepresentante = new Representante(recCedulaR, recNombreR, recTelefonoR, recEmailR);
+                            Cliente nuevoCliente = new Cliente(newCed, newNom, newTelef, newEmail, nuevoRepresentante);
+                        }
+                        System.out.println("CLIENTE AGREGADO");
+                        break;
+                    case 2:
+                        System.out.println("EDITAR CLIENTES");
+                        System.out.println("CLIENTES");
+                        Cliente.mostrarClientes();
+                        System.out.print("Ingrese el cliente a editar: ");
+                        int recEdi = sc.nextInt();
+                        sc.nextLine();
+                        System.out.print("Empleado a editar: \n");   
+                        String recOpc = "S";
+                        while(recOpc.equals("S")){
+                            System.out.println("1. Nombre"+"\n2. Telefono"+"\n3. Email"+"\n4. Representante");
+                            System.out.print("\nIngrese que campo desea editar: ");
+                            int recCampo = sc.nextInt();
+                            sc.nextLine();
+                            switch(recCampo){
+                                case 1:
+                                    System.out.println("Ingrese un nuevo nombre:");
+                                    String nuevoNombre = sc.nextLine();
+                                    Cliente.arrayCliente.get(recEdi-1).setNombre(nuevoNombre);
+                                    System.out.println("Nombre del cliente editado");
+                                    break;
+                                case 2:
+                                    System.out.println("Ingrese un nuevo telefono:");
+                                    String nuevoTelef = sc.nextLine();
+                                    Cliente.arrayCliente.get(recEdi-1).setTelefono(nuevoTelef);
+                                    System.out.println("Telefono del cliente editado"); 
+                                    break;
+                                case 3:
+                                    System.out.println("Ingrese un nuevo email:");
+                                    String nuevoEmail = sc.nextLine();
+                                    Cliente.arrayCliente.get(recEdi-1).setEmail(nuevoEmail);
+                                    System.out.println("Email del cliente editado");
+                                    break;
+                                case 4:
+                                    System.out.println("REPRESENTANTE");
+                                    System.out.println(Cliente.arrayCliente.get(recEdi-1).getDatosRepresentante());
+                                    System.out.println("Campos para editar");
+                                    System.out.println( "1. Nombre"+"\n2. Telefono"+"\n3. Email");
+                                    System.out.print("\nIngrese que campo desea editar: ");
+                                    int editarRe = sc.nextInt();
+                                    sc.nextLine();
+                                    switch(editarRe){
+                                        case 1:
+                                            System.out.println("Ingrese un nuevo nombre:");
+                                            String nombreRepre = sc.nextLine();
+                                            Cliente.arrayCliente.get(recEdi-1).getDatosRepresentante().setNombre(nombreRepre);
+                                            System.out.println("Nombre del representante editado");
+                                            break;
+                                        case 2:
+                                            System.out.println("Ingrese un nuevo telefono:");
+                                            String telefonoRepre = sc.nextLine();
+                                            Cliente.arrayCliente.get(recEdi-1).getDatosRepresentante().setTelefono(telefonoRepre);
+                                            System.out.println("Telefono del representante editado");
+                                            break;
+                                        case 3:
+                                            System.out.println("Ingrese un nuevo email:");
+                                            String EmailRepre = sc.nextLine();
+                                            Cliente.arrayCliente.get(recEdi-1).getDatosRepresentante().setEmail(EmailRepre);
+                                            System.out.println("Email del representante editado");
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    System.out.println("Representante editado");
+                                    break;
+                                default:
+                                    break;
+                            }
+                            System.out.println("Ingrese 'S' para seguir editando o 'N' para salir: ");
+                            recOpc = sc.nextLine();
+                        }
+                        
+                        
+                        break;
+                    case 3:
+                        break;
+                    default:
+                        break;
+                }
                 break;
             case 4:
                 System.out.println("MENU CITA");
